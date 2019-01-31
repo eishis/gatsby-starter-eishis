@@ -1,0 +1,29 @@
+.c-ttl {
+  font-weight: 700;
+}
+
+.c-tag {
+  line-height: 24px;
+  height: 24px;
+  color: #FFFFFF;
+  background-color: $C_TAG;
+}
+
+.c-img {
+  display: inline-block;
+  border-radius: 4px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.c-btn {
+  width: 100%;
+  max-width: 260px;
+  height: 56px;
+  border-radius: 28px;
+  text-align: center;
+  line-height: 56px;
+  font-size: 20px;
+  color: #FFFFFF;
+  font-weight: 700;
+}

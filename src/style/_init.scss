@@ -1,0 +1,24 @@
+/* nanoreset.css */
+@import url('https://unpkg.com/nanoreset/nanoreset.min.css');
+/* font Noto Sans JP */
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&subset=japanese');
+
+/* variable */
+$C_TXT: #555555;
+$C_TAG: #FFE867;
+$C_BG:#FAFCFF;
+$C_BTN: #0B409C;
+
+$W_PC: 960px;
+
+/* custom init */
+body {
+  background-color: $C_BG;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  color: $C_TXT;
+}
+a { text-decoration: none; }
