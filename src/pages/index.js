@@ -7,6 +7,8 @@ import { faFacebook, faTwitter, faGetPocket, faLine } from '@fortawesome/free-br
 import { faClock, faImage } from '@fortawesome/free-solid-svg-icons'
 import Card from '../components/Card'
 
+import { stripBasename } from 'history/PathUtils';
+
 library.add(
   faTwitter,
   faFacebook,
@@ -33,6 +35,33 @@ export default class IndexPage extends React.Component {
             }
           </div>
         </section>
+        <Top 
+          title={siteMetadata.title}
+          description={siteMetadata.description}
+        />
+        <div>
+          {posts.map(({ node: post }, index) => {
+              if (index === 0) {
+                return (
+                  <Link to={post.fields.slug}>
+                    <div>
+                      <p>{post.frontmatter.title}</p>
+                      <p>{post.frontmatter.date}</p>
+                      <p>{post.excerpt}</p>
+                    </div>
+                  </Link>
+                )
+              }
+              return (
+                <Link to={post.fields.slug}>
+                  <div>
+                    <p>{post.frontmatter.title}</p>
+                    <p>{post.frontmatter.date}</p>
+                  </div>
+                </Link>
+              )
+            })}
+        </div>
       </Layout>
     )
   }
