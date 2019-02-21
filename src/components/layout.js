@@ -1,6 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from "gatsby"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Navbar from '../components/Navbar'
 import '../style/style.scss'
@@ -38,6 +39,11 @@ const TemplateWrapper = ({ children }) => (
         </Helmet>
         <Navbar />
         <div>{children}</div>
+        {/* fontawesome example */}
+        <FontAwesomeIcon icon={['fab', 'facebook']} />
+        <FontAwesomeIcon icon={['fab', 'twitter']} />
+        <FontAwesomeIcon icon={['fab', 'get-pocket']} />
+        <FontAwesomeIcon icon={['fab', 'line']} />
       </div>
     )}
   />
