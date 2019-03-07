@@ -16,6 +16,13 @@ const TemplateWrapper = ({ children }) => (
               description,
             }
           }
+          allMarkdownRemark(
+            filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
+          ) {
+            group(field: frontmatter___category) {
+              fieldValue
+            }
+          }
         }
     `}
     render={data => (
@@ -37,7 +44,7 @@ const TemplateWrapper = ({ children }) => (
           <meta property="og:url" content="/" />
           <meta property="og:image" content="/img/og-image.jpg" />
         </Helmet>
-        <Navbar />
+        <Navbar categories={data.allMarkdownRemark.group}/>
         <div>{children}</div>
         {/* fontawesome example */}
         <FontAwesomeIcon icon={['fab', 'facebook']} />

@@ -4,6 +4,7 @@ import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faFacebook, faTwitter, faGetPocket, faLine } from '@fortawesome/free-brands-svg-icons'
+import Card from '../components/Card'
 
 library.add(
   faTwitter,
@@ -25,32 +26,8 @@ export default class IndexPage extends React.Component {
               <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
             </div>
             {posts
-              .map(({ node: post }) => (
-                <div
-                  className="content"
-                  style={{ border: '1px solid #333', padding: '2em 4em' }}
-                  key={post.id}
-                >
-                  <p>
-                    <Link className="has-text-primary" to={post.fields.slug}>
-                      {post.frontmatter.title}
-                    </Link>
-                    <span> &bull; </span>
-                    <small>{post.frontmatter.date}</small>
-                  </p>
-                  <p>
-                    {post.excerpt}
-                    <br />
-                    <br />
-                    {post.frontmatter.tags && post.frontmatter.tags.map(tag => <span>{tag}&nbsp;</span>)}
-                    <br />
-                    <br />
-                    <Link className="button is-small" to={post.fields.slug}>
-                      Keep Reading →
-                    </Link>
-                  </p>
-                </div>
-              ))}
+              .map(({ node: post }) => <Card content={post}/> )
+            }
           </div>
         </section>
       </Layout>
