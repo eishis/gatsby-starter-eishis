@@ -1,4 +1,4 @@
-.p-card {
+.p-inner {
   display: block;
   background-color: $C_CARD;
   margin: 0 auto;
@@ -10,7 +10,4 @@
   margin-bottom: 24px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   transition: all ease 0.24s;
-  &:hover {
-    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
-  }
 }

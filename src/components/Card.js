@@ -6,23 +6,32 @@ import injectsheet from 'react-jss'
 
 const styles = {
   container: {
-    composes: 'p-card'
-  }
+    composes: 'p-inner',
+    '&:hover': {
+      boxShadow: '0 4px 24px rgba(0,0,0,0.12)',
+    }
+  },
 }
 
-const container = ({ classes, children }) => (
-  <div className={classes.container}>{children}</div>
-)
+const Card = props => {
 
-const StyledContainer = injectsheet(styles)(container)
+  const container = ({ classes, children }) => (
+    <Link
+      to={props.content.fields.slug}
+      className={classes.container}>
+      {children}
+    </Link>
+  )
 
-const Card = props => (
-
-  <Link
-    to={props.content.fields.slug}>
+  const StyledContainer = injectsheet(styles)(container)
+  
+  return(
 
     <StyledContainer>
-      <h3 className="c-ttl">{props.content.frontmatter.title}</h3>
+      <h3 className="c-ttl">
+        {props.content.frontmatter.title}
+      </h3>
+
       <div>
         {/*
           props.tags.map(({ node: tag }) => (
@@ -34,7 +43,7 @@ const Card = props => (
 
     </StyledContainer>
 
-  </Link>
-)
+  )
+}
 
 export default Card
