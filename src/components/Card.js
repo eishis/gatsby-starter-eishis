@@ -3,26 +3,26 @@ import { Image, Link } from 'gatsby'
 import Tag from './Tag'
 import Date from './Date'
 
-const Card = props => (
+const Card = props => {
+  const {
+    content: {
+      fields: { slug },
+      frontmatter: { title, date, tags },
+    },
+  } = props
 
-  <Link
-    className="p-card"
-    to={props.content.fields.slug}>
-
-    <div>
-      <h3 className="c-ttl">{props.content.frontmatter.title}</h3>
+  return (
+    <Link className="p-card" to={slug}>
       <div>
-        {/*
-          props.tags.map(({ node: tag }) => (
-            <Tag content={tag} />
-          ))
-          */}
-        <Date content={props.content.frontmatter.date} />
+        <h3 className="c-ttl">{title}</h3>
+        <div>
+          tags
+          {tags && tags.map(tag => <Tag tag={tag.toUpperCase()} />)}
+          <Date content={date} />
+        </div>
       </div>
-
-    </div>
-
-  </Link>
-)
+    </Link>
+  )
+}
 
 export default Card

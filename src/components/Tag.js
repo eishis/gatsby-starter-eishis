@@ -1,9 +1,16 @@
 import React from 'react'
+import injectSheet from 'react-jss'
 
-const Tag = props => (
+const styles = {
+  tag: {
+    color: '#FFFFFF',
+    backgroundColor: '#FFE867',
+    borderRadius: 8,
+    padding: 4,
+    margin: 4,
+  },
+}
 
-  <span className="c-tag">{props.content}</span>
+const Tag = ({ classes, tag }) => <span className={classes.tag}>{tag}</span>
 
-)
-
-export default Tag
+export default injectSheet(styles)(Tag)
