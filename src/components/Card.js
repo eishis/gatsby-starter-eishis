@@ -5,26 +5,23 @@ import Date from './Date'
 import injectsheet from 'react-jss'
 
 const styles = {
-  card: {
+  container: {
     composes: 'p-card'
   }
 }
 
-const postCard = ({ classses, children, props }) => (
-  <Link
-    to={props.content.fields.slug}
-    className={classses.card}>
-    {children}
-  </Link>
+const container = ({ classes, children }) => (
+  <div className={classes.container}>{children}</div>
 )
 
-const styledCard = injectsheet(styles)(card)
+const StyledContainer = injectsheet(styles)(container)
 
 const Card = props => (
 
-  <StyledCard>
+  <Link
+    to={props.content.fields.slug}>
 
-    <div>
+    <StyledContainer>
       <h3 className="c-ttl">{props.content.frontmatter.title}</h3>
       <div>
         {/*
@@ -35,9 +32,9 @@ const Card = props => (
         <Date content={props.content.frontmatter.date} />
       </div>
 
-    </div>
+    </StyledContainer>
 
-  </StyledCard>
+  </Link>
 )
 
 export default Card
