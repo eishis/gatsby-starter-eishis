@@ -22,4 +22,7 @@ body {
   letter-spacing: 1px;
   color: $C_TXT;
 }
-a { text-decoration: none; }
+a {
+  text-decoration: none;
+  color: $C_TXT;
+}

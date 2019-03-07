@@ -4,13 +4,15 @@ import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faFacebook, faTwitter, faGetPocket, faLine } from '@fortawesome/free-brands-svg-icons'
+import { faClock } from '@fortawesome/free-solid-svg-icons'
 import Card from '../components/Card'
 
 library.add(
   faTwitter,
   faFacebook,
   faGetPocket,
-  faLine
+  faLine,
+  faClock
 )
 
 export default class IndexPage extends React.Component {

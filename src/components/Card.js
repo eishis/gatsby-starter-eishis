@@ -11,6 +11,18 @@ const styles = {
       boxShadow: '0 4px 24px rgba(0,0,0,0.12)',
     }
   },
+  inner: {
+    marginTop: 8,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  title: {
+    fontSize: '1.6em',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis'
+  }
 }
 
 const Card = props => {
@@ -28,16 +40,15 @@ const Card = props => {
   return(
 
     <StyledContainer>
-      <h3 className="c-ttl">
-        {props.content.frontmatter.title}
-      </h3>
+      <h3 className="c-ttl" style={styles.title}>{props.content.frontmatter.title}</h3>
 
-      <div>
+      <div style={styles.inner}>
         {/*
           props.tags.map(({ node: tag }) => (
             <Tag content={tag} />
           ))
           */}
+          <div></div>
         <Date content={props.content.frontmatter.date} />
       </div>
 
