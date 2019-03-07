@@ -2,12 +2,27 @@ import React from 'react'
 import { Image, Link } from 'gatsby'
 import Tag from './Tag'
 import Date from './Date'
+import injectsheet from 'react-jss'
+
+const styles = {
+  card: {
+    composes: 'p-card'
+  }
+}
+
+const postCard = ({ classses, children, props }) => (
+  <Link
+    to={props.content.fields.slug}
+    className={classses.card}>
+    {children}
+  </Link>
+)
+
+const styledCard = injectsheet(styles)(card)
 
 const Card = props => (
 
-  <Link
-    className="p-card"
-    to={props.content.fields.slug}>
+  <StyledCard>
 
     <div>
       <h3 className="c-ttl">{props.content.frontmatter.title}</h3>
@@ -22,7 +37,7 @@ const Card = props => (
 
     </div>
 
-  </Link>
+  </StyledCard>
 )
 
 export default Card
