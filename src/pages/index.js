@@ -26,12 +26,8 @@ export default class IndexPage extends React.Component {
               <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
             </div>
             {posts
-              .map(({ node: post }) => (
-                <Card
-                  postUrl={post.fields.slud}
-                  postTitle={post.frontmatter.title}
-                  postDate={post.frontmatter.date}/>
-              ))}
+              .map(({ node: post }) => <Card content={post}/> )
+            }
           </div>
         </section>
       </Layout>

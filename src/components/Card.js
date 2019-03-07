@@ -7,19 +7,17 @@ const Card = props => (
 
   <Link
     className="p-card"
-    to={props.postUrl}>
+    to={props.content.fields.slug}>
 
     <div>
-
-      <h3 className="c-ttl">{props.postTitle}</h3>
-
+      <h3 className="c-ttl">{props.content.frontmatter.title}</h3>
       <div>
         {/*
           props.tags.map(({ node: tag }) => (
             <Tag content={tag} />
           ))
           */}
-        <Date content={props.postDate} />
+        <Date content={props.content.frontmatter.date} />
       </div>
 
     </div>
