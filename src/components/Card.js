@@ -39,6 +39,12 @@ const styles = {
 }
 
 const Card = props => {
+  const {
+    content: {
+      frontmatter: { tags },
+    },
+  } = props
+
   const container = ({ classes, children }) => (
     <Link to={props.content.fields.slug} className={classes.container}>
       {children}
