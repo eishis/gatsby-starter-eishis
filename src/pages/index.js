@@ -28,40 +28,21 @@ export default class IndexPage extends React.Component {
         <section className="section">
           <div className="container">
             <div className="content">
-              <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
             </div>
             {posts
-              .map(({ node: post }) => <Card content={post}/> )
-            }
+              .map(({ node: post }, index) => {
+                // 最初の記事は要約を表示する（未実装）
+                if (index === 0) {
+                  return (
+                    <Card key={index} content={post}/>
+                  )
+                }
+                return (
+                  <Card key={index} content={post}/>
+                )
+              })}
           </div>
         </section>
-        <Top 
-          title={siteMetadata.title}
-          description={siteMetadata.description}
-        />
-        <div>
-          {posts.map(({ node: post }, index) => {
-              if (index === 0) {
-                return (
-                  <Link to={post.fields.slug}>
-                    <div>
-                      <p>{post.frontmatter.title}</p>
-                      <p>{post.frontmatter.date}</p>
-                      <p>{post.excerpt}</p>
-                    </div>
-                  </Link>
-                )
-              }
-              return (
-                <Link to={post.fields.slug}>
-                  <div>
-                    <p>{post.frontmatter.title}</p>
-                    <p>{post.frontmatter.date}</p>
-                  </div>
-                </Link>
-              )
-            })}
-        </div>
       </Layout>
     )
   }
