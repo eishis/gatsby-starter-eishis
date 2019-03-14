@@ -7,9 +7,14 @@ import injectsheet from 'react-jss'
 const styles = {
   container: {
     composes: 'p-inner',
+    display: 'flex',
+    justifyContent: 'space-between',
     '&:hover': {
       boxShadow: '0 4px 24px rgba(0,0,0,0.12)',
     }
+  },
+  flexInner: {
+    width: 'calc( 100% - 76px )'
   },
   inner: {
     marginTop: 8,
@@ -22,6 +27,14 @@ const styles = {
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis'
+  },
+  thumbnail: {
+    width: 60,
+    height: 60,
+    backgroundColor: '#cccccc',
+    borderRadius: 4,
+    textAlign: 'center',
+    lineHeight: '60px'
   }
 }
 
@@ -40,18 +53,21 @@ const Card = props => {
   return(
 
     <StyledContainer>
-      <h3 className="c-ttl" style={styles.title}>{props.content.frontmatter.title}</h3>
-
-      <div style={styles.inner}>
-        {/*
-          props.tags.map(({ node: tag }) => (
-            <Tag content={tag} />
-          ))
-          */}
-          <div></div>
-        <Date content={props.content.frontmatter.date} />
+      <div style={styles.thumbnail}>
       </div>
+      <div style={styles.flexInner}>
+        <h3 className="c-ttl" style={styles.title}>{props.content.frontmatter.title}</h3>
 
+        <div style={styles.inner}>
+          {/*
+            props.tags.map(({ node: tag }) => (
+              <Tag content={tag} />
+            ))
+            */}
+            <div></div>
+          <Date content={props.content.frontmatter.date} />
+        </div>
+      </div>
     </StyledContainer>
 
   )
