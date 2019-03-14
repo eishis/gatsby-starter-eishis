@@ -43,18 +43,11 @@ const Card = props => {
     content: {
       frontmatter: { tags },
     },
+    classes,
   } = props
 
-  const container = ({ classes, children }) => (
-    <Link to={props.content.fields.slug} className={classes.container}>
-      {children}
-    </Link>
-  )
-
-  const StyledContainer = injectsheet(styles)(container)
-
   return (
-    <StyledContainer>
+    <Link to={props.content.fields.slug} className={classes.container}>
       <div style={styles.thumbnail} />
       <div style={styles.flexInner}>
         <h3 className="c-ttl" style={styles.title}>
@@ -67,8 +60,8 @@ const Card = props => {
           <Date content={props.content.frontmatter.date} />
         </div>
       </div>
-    </StyledContainer>
+    </Link>
   )
 }
 
-export default Card
+export default injectsheet(styles)(Card)
