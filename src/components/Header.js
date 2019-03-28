@@ -5,8 +5,16 @@ const styles = {
   container: {
     width: '100%',
     height: 64,
+    opacity: 1,
     position: 'fixed',
-    top: 0,
+    boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+    backgroundColor: '#ffffff'
+  },
+  containerNone: {
+    width: '100%',
+    height: 64,
+    opacity: 0,
+    position: 'fixed',
     boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
     backgroundColor: '#ffffff'
   },
@@ -41,14 +49,33 @@ export default class Header extends React.Component {
   constructor( props ) {
     super( props );
     this.state = {
-      isScrollTop: 0
+      isDisplay: false,
+      isNone: true
     }
+  }
+
+  componentDidMount() {
+
+    setInterval(() => {
+      const value = document.documentElement.scrollTop
+      console.log(value)
+      if (600 < value) {
+        this.setState({isDisplay: true})
+      } else {
+        this.setState({isDisplay: false})
+      }
+    }, 800)
+
+    setTimeout(() => this.setState({isNone: false}), 600)
+
   }
 
   render() {
 
     return(
-      <header style={styles.container}>
+      <header
+        className={this.state.isDisplay === true ? 'a-header-show' : 'a-header-hide'}
+        style={this.state.isNone === false ? styles.container : styles.containerNone}>
         <div style={styles.inner}>
           <ul style={styles.nav}>
             <li style={styles.list}>UPDATE</li>
