@@ -7,7 +7,7 @@ import Header from './Header'
 import Navbar from '../components/Navbar'
 import '../style/style.scss'
 
-const TemplateWrapper = ({ children }) => (
+const TemplateWrapper = ({ children, title, description }) => (
   <StaticQuery
     query={graphql`
       query HeadingQuery {
@@ -46,6 +46,10 @@ const TemplateWrapper = ({ children }) => (
           <meta property="og:image" content="/img/og-image.jpg" />
         </Helmet>
         <Header />
+        <h1>{data.site.siteMetadata.title}</h1>
+        <p>{data.site.siteMetadata.description}</p>
+        <FontAwesomeIcon icon={['fab', 'facebook']} />
+        <FontAwesomeIcon icon={['fab', 'twitter']} />
         <Navbar categories={data.allMarkdownRemark.group}/>
         <div>{children}</div>
         {/* fontawesome example */}
