@@ -11,22 +11,22 @@ const styles = {
     justifyContent: 'space-between',
     '&:hover': {
       boxShadow: '0 4px 24px rgba(0,0,0,0.12)',
-    }
+    },
   },
   flexInner: {
-    width: 'calc( 100% - 76px )'
+    width: 'calc( 100% - 76px )',
   },
   inner: {
     marginTop: 8,
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   title: {
     fontSize: '1.6em',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis'
+    textOverflow: 'ellipsis',
   },
   thumbnail: {
     width: 60,
@@ -34,43 +34,34 @@ const styles = {
     backgroundColor: '#cccccc',
     borderRadius: 4,
     textAlign: 'center',
-    lineHeight: '60px'
-  }
+    lineHeight: '60px',
+  },
 }
 
 const Card = props => {
+  const {
+    content: {
+      frontmatter: { tags },
+    },
+    classes,
+  } = props
 
-  const container = ({ classes, children }) => (
-    <Link
-      to={props.content.fields.slug}
-      className={classes.container}>
-      {children}
-    </Link>
-  )
-
-  const StyledContainer = injectsheet(styles)(container)
-  
-  return(
-
-    <StyledContainer>
-      <div style={styles.thumbnail}>
-      </div>
+  return (
+    <Link to={props.content.fields.slug} className={classes.container}>
+      <div style={styles.thumbnail} />
       <div style={styles.flexInner}>
-        <h3 className="c-ttl" style={styles.title}>{props.content.frontmatter.title}</h3>
+        <h3 className="c-ttl" style={styles.title}>
+          {props.content.frontmatter.title}
+        </h3>
 
         <div style={styles.inner}>
-          {/*
-            props.tags.map(({ node: tag }) => (
-              <Tag content={tag} />
-            ))
-            */}
-            <div></div>
+          {tags && tags.map(tag => <Tag tag={tag.toUpperCase()} />)}
+          <div />
           <Date content={props.content.frontmatter.date} />
         </div>
       </div>
-    </StyledContainer>
-
+    </Link>
   )
 }
 
-export default Card
+export default injectsheet(styles)(Card)

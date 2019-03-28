@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
+import Tag from '../components/Tag'
 
 export const BlogPostTemplate = ({
   content,
@@ -25,20 +26,17 @@ export const BlogPostTemplate = ({
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
-            <p>{description}</p>
-            <PostContent content={content} />
             {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
+              <div style={{ marginTop: `1rem` }}>
                 <ul className="taglist">
                   {tags.map(tag => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
+                    <Tag tag={tag.toUpperCase()} />
                   ))}
                 </ul>
               </div>
             ) : null}
+            <p>{description}</p>
+            <PostContent content={content} />
           </div>
         </div>
       </div>
@@ -64,11 +62,12 @@ const BlogPost = ({ data }) => {
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
         helmet={
-          <Helmet
-            titleTemplate="%s | Blog"
-          >
+          <Helmet titleTemplate="%s | Blog">
             <title>{`${post.frontmatter.title}`}</title>
-            <meta name="description" content={`${post.frontmatter.description}`} />
+            <meta
+              name="description"
+              content={`${post.frontmatter.description}`}
+            />
           </Helmet>
         }
         tags={post.frontmatter.tags}
