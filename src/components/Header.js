@@ -25,18 +25,11 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '12px 24px'
+    padding: '16px 24px'
   },
   nav: {
     display: 'flex',
     justifyContent: 'flex-start',
-  },
-  list: {
-    fontSize: 20,
-    height: 40,
-    padding: '0 16px',
-    fontWeight: 700,
-    lineHeight: '32px',
   },
   icon: {
     fontSize: 24,
@@ -78,9 +71,9 @@ export default class Header extends React.Component {
         style={this.state.isNone === false ? styles.container : styles.containerNone}>
         <div style={styles.inner}>
           <ul style={styles.nav}>
-            <li style={styles.list}>UPDATE</li>
-            <li style={styles.list}>BLOG</li>
-            <li style={styles.list}>NEWS</li>
+            <li className="c-nav c-nav-active">UPDATE</li>
+            <li className="c-nav">BLOG</li>
+            <li className="c-nav">NEWS</li>
           </ul>
           <div>
             <FontAwesomeIcon icon={['fab', 'facebook']} style={styles.icon} />
