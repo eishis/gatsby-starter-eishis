@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Header from './Header'
 
 import Navbar from '../components/Navbar'
 import '../style/style.scss'
@@ -44,6 +45,7 @@ const TemplateWrapper = ({ children, title, description }) => (
           <meta property="og:url" content="/" />
           <meta property="og:image" content="/img/og-image.jpg" />
         </Helmet>
+        <Header />
         <h1>{data.site.siteMetadata.title}</h1>
         <p>{data.site.siteMetadata.description}</p>
         <FontAwesomeIcon icon={['fab', 'facebook']} />
