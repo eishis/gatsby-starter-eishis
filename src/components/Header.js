@@ -67,8 +67,8 @@ export default class Header extends React.Component {
 
     return(
       <header
-        className={this.state.isDisplay === true ? 'a-header-show' : 'a-header-hide'}
-        style={this.state.isNone === false ? styles.container : styles.containerNone}>
+        className={this.state.isDisplay ? 'a-header-show' : 'a-header-hide'}
+        style={this.state.isNone ? styles.containerNone : styles.container}>
         <div style={styles.inner}>
           <ul style={styles.nav}>
             <li className="c-nav c-nav-active">UPDATE</li>
