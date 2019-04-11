@@ -11,6 +11,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import { faClock, faImage } from '@fortawesome/free-solid-svg-icons'
 import Card from '../components/Card'
+import FirstCard from '../components/FirstCard'
 
 import { stripBasename } from 'history/PathUtils'
 
@@ -29,7 +30,7 @@ export default class IndexPage extends React.Component {
             {posts.map(({ node: post }, index) => {
               // 最初の記事は要約を表示する（未実装）
               if (index === 0) {
-                return <Card key={index} content={post} />
+                return <FirstCard key={index} content={post} />
               }
               return <Card key={index} content={post} />
             })}
