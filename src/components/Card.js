@@ -16,11 +16,16 @@ const styles = {
   flexInner: {
     width: 'calc( 100% - 76px )',
   },
+  tagInner: {
+    marginTop: 5,
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
   inner: {
-    marginTop: 8,
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'flex-end'
   },
   title: {
     fontSize: '1.6em',
@@ -53,10 +58,10 @@ const Card = props => {
         <h3 className="c-ttl" style={styles.title}>
           {props.content.frontmatter.title}
         </h3>
-
         <div style={styles.inner}>
-          {tags && tags.map(tag => <Tag tag={tag.toUpperCase()} />)}
-          <div />
+          <div style={styles.tagInner}>
+            {tags && tags.map(tag => <Tag tag={tag.toUpperCase()} />)}
+          </div>
           <Date content={props.content.frontmatter.date} />
         </div>
       </div>

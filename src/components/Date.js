@@ -5,7 +5,8 @@ const styles = {
   text: {
     color: '#aaaaaa',
     fontWeight: 700,
-    fontSize: '0.9em'
+    fontSize: '0.9em',
+    marginRight: 4,
   },
   icon: {
     marginRight: 8
