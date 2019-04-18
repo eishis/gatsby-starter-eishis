@@ -24,9 +24,7 @@ export default class IndexPage extends React.Component {
 
     return (
       <Layout>
-        <section className="section">
-          <div className="container">
-            <div className="content" />
+        <section className="l-container">
             {posts.map(({ node: post }, index) => {
               // 最初の記事は要約を表示する（未実装）
               if (index === 0) {
@@ -34,7 +32,6 @@ export default class IndexPage extends React.Component {
               }
               return <Card key={index} content={post} />
             })}
-          </div>
         </section>
       </Layout>
     )

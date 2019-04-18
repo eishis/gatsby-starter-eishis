@@ -10,11 +10,14 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     '&:hover': { boxShadow: '0 4px 24px rgba(0,0,0,0.12)' },
-    '@media (max-width: 960px)': { display: 'block' },
+    '@media screen and (max-width: 960px)': {
+      display: 'block',
+      padding: 16
+    },
   },
   flexInner: {
     width: 'calc( 48% - 24px )',
-    '@media (max-width: 960px)': {
+    '@media screen and (max-width: 960px)': {
       width: '100%',
       marginTop: 16,
     },
@@ -25,17 +28,21 @@ const styles = {
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    '@media (max-width: 960px)': { marginTop: 0 }
+    flexWrap: 'wrap',
+    '@media screen and (max-width: 960px)': { marginTop: 0 }
   },
   inner: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'flex-end',
-    '@media (max-width: 960px)': {
+    '@media screen and (max-width: 960px)': {
       margin: {
         top: 16,
         bottom: 16
-      }
+      },
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
+      alignItems: 'flex-end',
     }
   },
   title: {
@@ -57,7 +64,7 @@ const styles = {
     borderRadius: 4,
     textAlign: 'center',
     lineHeight: '60px',
-    '@media (max-width: 960px)': { height: 180 }
+    '@media screen and (max-width: 960px)': { height: 180 }
   },
   text: { marginTop: 16 }
 }

@@ -12,26 +12,41 @@ const styles = {
     '&:hover': {
       boxShadow: '0 4px 24px rgba(0,0,0,0.12)',
     },
+    '@media screen and (max-width: 960px)': {
+      padding: 16
+    },
   },
   flexInner: {
     width: 'calc( 100% - 76px )',
   },
   tagInner: {
-    marginTop: 5,
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    flexWrap: 'wrap',
+    margin: {
+      top: 5
+    }
   },
   inner: {
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
+    '@media screen and (max-width: 960px)': {
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
+      alignItems: 'flex-end',
+    }
   },
   title: {
+    composes: 'c-ttl',
     fontSize: '1.6em',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
+    '@media screen and (max-width: 960px)': {
+      fontSize: '1.25em',
+    }
   },
   thumbnail: {
     width: 60,
@@ -53,13 +68,13 @@ const Card = props => {
 
   return (
     <Link to={props.content.fields.slug} className={classes.container}>
-      <div style={styles.thumbnail} />
-      <div style={styles.flexInner}>
-        <h3 className="c-ttl" style={styles.title}>
+      <div className={classes.thumbnail} />
+      <div className={classes.flexInner}>
+        <h3 className={classes.title}>
           {props.content.frontmatter.title}
         </h3>
-        <div style={styles.inner}>
-          <div style={styles.tagInner}>
+        <div className={classes.inner}>
+          <div className={classes.tagInner}>
             {tags && tags.map(tag => <Tag tag={tag.toUpperCase()} />)}
           </div>
           <Date content={props.content.frontmatter.date} />
