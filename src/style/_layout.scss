@@ -2,7 +2,7 @@
   width: $W_PC;
   margin: 0 auto;
   @media screen and ( max-width: $W_PC ) {
-    width: calc( 100% - 48px );
+    width: calc( 100% - 32px );
   }
 }
 

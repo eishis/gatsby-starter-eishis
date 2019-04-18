@@ -9,53 +9,64 @@ const styles = {
     composes: 'p-inner',
     display: 'flex',
     justifyContent: 'space-between',
-    '&:hover': {
-      boxShadow: '0 4px 24px rgba(0,0,0,0.12)',
-    },
+    '&:hover': { boxShadow: '0 4px 24px rgba(0,0,0,0.12)' },
     '@media screen and (max-width: 960px)': {
+      display: 'block',
       padding: 16
     },
   },
   flexInner: {
-    width: 'calc( 100% - 76px )',
+    width: 'calc( 48% - 24px )',
+    '@media screen and (max-width: 960px)': {
+      width: '100%',
+      marginTop: 16,
+    },
   },
+  
   tagInner: {
+    marginTop: 12,
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
     flexWrap: 'wrap',
-    margin: {
-      top: 5
-    }
+    '@media screen and (max-width: 960px)': { marginTop: 0 }
   },
   inner: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'flex-end',
     '@media screen and (max-width: 960px)': {
+      margin: {
+        top: 16,
+        bottom: 16
+      },
       flexDirection: 'column',
       justifyContent: 'flex-end',
       alignItems: 'flex-end',
     }
   },
   title: {
-    composes: 'c-ttl',
-    fontSize: '1.6em',
+    font: {
+      size: '1.8em',
+      weight: 700
+    },
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
-    '@media screen and (max-width: 960px)': {
-      fontSize: '1.25em',
-    }
+    letterSpacing: 2,
+    '@media (max-width: 960px)': { fontSize: '1.4em' }
   },
   thumbnail: {
-    width: 60,
-    height: 60,
+    width: '100%',
+    maxWidth: 480,
+    height: 280,
     backgroundColor: '#cccccc',
     borderRadius: 4,
     textAlign: 'center',
     lineHeight: '60px',
+    '@media screen and (max-width: 960px)': { height: 180 }
   },
+  text: { marginTop: 16 }
 }
 
 const Card = props => {
@@ -70,7 +81,7 @@ const Card = props => {
     <Link to={props.content.fields.slug} className={classes.container}>
       <div className={classes.thumbnail} />
       <div className={classes.flexInner}>
-        <h3 className={classes.title}>
+        <h3 className="c-ttl" className={classes.title}>
           {props.content.frontmatter.title}
         </h3>
         <div className={classes.inner}>
@@ -79,6 +90,7 @@ const Card = props => {
           </div>
           <Date content={props.content.frontmatter.date} />
         </div>
+        <p className={classes.text}>{props.content.excerpt}</p>
       </div>
     </Link>
   )

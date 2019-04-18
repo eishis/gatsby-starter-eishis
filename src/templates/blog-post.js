@@ -18,27 +18,23 @@ export const BlogPostTemplate = ({
   const PostContent = contentComponent || Content
 
   return (
-    <section className="p-inner">
+    <section className="l-container">
       {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            {tags && tags.length ? (
-              <div style={{ marginTop: `1rem` }}>
-                <ul className="taglist">
-                  {tags.map(tag => (
-                    <Tag tag={tag.toUpperCase()} />
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-            <p>{description}</p>
-            <PostContent content={content} />
+      <div className="p-inner">
+        <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
+          {title}
+        </h1>
+        {tags && tags.length ? (
+          <div style={{ marginTop: `1rem` }}>
+            <ul className="taglist">
+              {tags.map(tag => (
+                <Tag tag={tag.toUpperCase()} />
+              ))}
+            </ul>
           </div>
-        </div>
+        ) : null}
+        <p>{description}</p>
+        <PostContent content={content} />
       </div>
     </section>
   )
